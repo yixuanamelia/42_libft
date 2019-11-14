@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 16:42:50 by yiwang            #+#    #+#             */
-/*   Updated: 2018/05/15 17:54:39 by yiwang           ###   ########.fr       */
+/*   Created: 2018/05/13 16:40:52 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:54:05 by yiwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char *tdst;
-	char *tsrc;
+	t_list	*tmp;
+	t_list	*tmp2;
+	t_list	*first;
 
-	tdst = (char*)dst;
-	tsrc = (char*)src;
-	if (tsrc < tdst)
-	{
-		tsrc = tsrc + n - 1;
-		tdst = tdst + n - 1;
-		while (n > 0)
-		{
-			*tdst-- = *tsrc--;
-			n--;
-		}
-	}
+	if (!lst || !f)
+		return (NULL);
+	tmp2 = f(lst);
+	if (!(first = ft_lstnew(tmp2->content, tmp2->content_size)))
+		return (NULL);
 	else
 	{
-		while (n > 0)
+		tmp = first;
+		lst = lst->next;
+		while (lst)
 		{
-			*tdst++ = *tsrc++;
-			n--;
+			tmp2 = f(lst);
+			if (!(tmp->next = ft_lstnew(tmp2->content, tmp2->content_size)))
+				return (NULL);
+			tmp = tmp->next;
+			lst = lst->next;
 		}
 	}
-	return (dst);
+	return (first);
 }

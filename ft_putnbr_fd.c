@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 16:46:41 by yiwang            #+#    #+#             */
-/*   Updated: 2018/05/15 17:57:02 by yiwang           ###   ########.fr       */
+/*   Created: 2018/05/02 19:07:07 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:55:04 by yiwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (c >= 65 && c <= 90)
-		return (c = c + 32);
-	return (c);
+	long x;
+
+	x = n;
+	if (x < 0)
+	{
+		ft_putchar_fd('-', fd);
+		x = -x;
+	}
+	if (x < 10)
+		ft_putchar_fd(x + '0', fd);
+	else
+	{
+		ft_putnbr_fd(x / 10, fd);
+		ft_putnbr_fd(x % 10, fd);
+	}
 }

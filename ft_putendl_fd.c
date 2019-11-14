@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 16:46:41 by yiwang            #+#    #+#             */
-/*   Updated: 2018/05/15 17:57:02 by yiwang           ###   ########.fr       */
+/*   Created: 2018/04/29 16:58:28 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:54:59 by yiwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	if (c >= 65 && c <= 90)
-		return (c = c + 32);
-	return (c);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

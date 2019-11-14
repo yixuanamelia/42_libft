@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 16:46:41 by yiwang            #+#    #+#             */
-/*   Updated: 2018/05/15 17:57:02 by yiwang           ###   ########.fr       */
+/*   Created: 2018/04/29 12:32:02 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:56:16 by yiwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (c >= 65 && c <= 90)
-		return (c = c + 32);
-	return (c);
+	unsigned int	i;
+	char			*s2;
+
+	i = 0;
+	if (s)
+	{
+		s2 = ft_strnew(ft_strlen(s));
+		if (s2 == NULL)
+			return (NULL);
+		while (s[i] != '\0')
+		{
+			s2[i] = f(s[i]);
+			i++;
+		}
+		return (s2);
+	}
+	return (NULL);
 }

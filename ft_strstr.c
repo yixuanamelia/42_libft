@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/28 16:46:22 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:56:48 by yiwang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strstr(const char *s1, const char *s2)
@@ -13,12 +25,12 @@ char	*ft_strstr(const char *s1, const char *s2)
 		ts2 = s2;
 		while (*ts2 != '\0' && *ts1 == *ts2)
 		{
-			ts1=++;
+			ts1++;
 			ts2++;
 		}
 		if (*ts2 == '\0')
-			return ((char*)s1)
+			return ((char*)s1);
 		s1++;
 	}
-	return (NULL);
+	return (0);
 }

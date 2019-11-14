@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yiwang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 16:46:41 by yiwang            #+#    #+#             */
-/*   Updated: 2018/05/15 17:57:02 by yiwang           ###   ########.fr       */
+/*   Created: 2018/04/28 19:46:17 by yiwang            #+#    #+#             */
+/*   Updated: 2018/05/15 17:54:16 by yiwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void	*ft_memalloc(size_t size)
 {
-	if (c >= 65 && c <= 90)
-		return (c = c + 32);
-	return (c);
+	void	*m;
+
+	m = malloc(size);
+	if (m == 0)
+		return (NULL);
+	else
+		return (ft_memset(m, 0, size));
 }
